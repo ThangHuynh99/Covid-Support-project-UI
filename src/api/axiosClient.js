@@ -1,8 +1,11 @@
 import axios from 'axios';
+import moment from 'moment';
 
+var axiosClient = null;
 
 var access = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')).token : "";
-const axiosClient = axios.create({
+if(localStorage.getItem('expire') && localStorage.getItem('expire') > moment().format('X')) {
+    axiosClient = axios.create({
     baseURL: 'http://localhost:8080/api/v1/',
     headers: {
         'Content-Type': 'application/json',
@@ -11,6 +14,16 @@ const axiosClient = axios.create({
         'Authorization': 'Bearer ' + access
     },
 });
+} else {
+    axiosClient = axios.create({
+        baseURL: 'http://localhost:8080/api/v1/',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+    });
+}
 
 // Add a request interceptor
 axiosClient.interceptors.request.use(

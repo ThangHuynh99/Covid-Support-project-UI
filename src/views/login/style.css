@@ -1,13 +1,12 @@
 body {
-  background-color: rgb(219, 242, 250) !important;
+  background-color: rgb(228, 242, 247);
 }
 
 .container {
-    margin-top: 50%;
-    transform: translateY(-10%);
-  }
-  
-  body {
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,10 +14,13 @@ body {
     position: relative;
     min-height: 100%;
     background: #F1F1F1;
+    background-color: rgb(228, 242, 247);
   }
   
+
+  
   .header-login {
-    text-align: center;  
+    text-align: center;
   }
 
   .header-login-title {
@@ -55,8 +57,8 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 30%;
+    height: 40%;
     padding: 5px;
     box-sizing: border-box;
   }
@@ -437,4 +439,13 @@ body {
 .text-chartjs {
   color: red;
 }
-  
+
+.login-logo {
+  padding-top: 20px;
+  width: 100px !important;
+  height: 100px;
+  background-image: cover;
+  padding-left: 50%;
+  transform: translateX(-18%) ;
+  margin-bottom: 0 !important;
+}

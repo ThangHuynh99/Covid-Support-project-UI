@@ -11,14 +11,14 @@ const authorizationAPI = {
         return axiosClient.post(url, body);
     },
 
-    signup() {
+    signup(body) {
         const url = "auth/signup"
-        return axiosClient.post(url);
+        return axiosClient.post(url, body);
     },
 
-    checkToken() {
+    async checkToken() {
         const url = "checkToken"
-        return axiosClient.post(url);
+        return await axiosClient.post(url);
     }
 }
 
