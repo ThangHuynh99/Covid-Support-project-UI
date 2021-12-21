@@ -11,7 +11,7 @@ function CheckRoute({ component: Component, ...rest }) {
             {...rest}
             render={(props) => {
                 if (localStorage.getItem('expire') && localStorage.getItem('expire') > moment().format('X')) {
-                    if (localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo')).roles[0].roleName !== "ROLE_USER") {
+                    if (localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo')).roles.length > 1) {
                         console.log(JSON.parse(localStorage.getItem('userInfo')).roles[0].roleName);
                         return <Component {...props} />;
                     }

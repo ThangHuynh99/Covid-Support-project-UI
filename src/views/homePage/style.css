@@ -1,0 +1,66 @@
+.order {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 5px;
+    cursor: pointer;
+    display: block;
+    border-left: 3px solid #f2c94c;
+
+    height: auto;
+}
+
+.civilian-body {
+    display: flex;
+}
+
+.civilian {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 2em;
+    padding-left: 10px;
+}
+
+.civilian-title {
+    margin-bottom: 0;
+    padding-bottom: 5px;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 500;
+
+    font-size: 1.5em;
+    line-height: 20px;
+
+    color: #181c32;
+}
+
+.civilian-name {
+    font-size: 20px;
+    font-weight: 300;
+    padding-left: 4px;
+}
+
+.civilian-info {
+    font-size: 20px;
+    width: 500px;
+}
+
+.civilian-detail {
+    display: flex;
+    align-self: flex-end;
+    padding-left: 100px;
+    margin-bottom: 20px;
+}
+
+.civilian-detail-btn {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    background-color: rgb(125, 177, 179);
+    font-size: 16px;
+    height: 35px;
+    width: auto;
+    cursor: pointer;
+}

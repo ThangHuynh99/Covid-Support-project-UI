@@ -2,13 +2,13 @@ import axiosClient from "./axiosClient";
 
 
 //family id is userId
-const civilianAPI = {
+const CivilianAPI = {
     findAllFamilyMemberByUser(familyId) {
         const url = "civilians/" + familyId    
-        return axiosClient.post(url);
+        return axiosClient.get(url);
     },
 
     
 }
 
-export default civilianAPI;
+export default CivilianAPI;

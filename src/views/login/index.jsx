@@ -48,7 +48,7 @@ function Login(props) {
                 .login(userNameRef.current.value, passWordRef.current.value)
                 .then((response) => { localStorage.setItem('userInfo', JSON.stringify(response.data)); 
                 localStorage.setItem("expire", moment().add(1, 'days').format('X')) });
-            history.push('/home');
+            history.push('/civilian');
         } catch {
             setError('Tên đăng nhập hoặc mật khẩu không đúng!');
         }

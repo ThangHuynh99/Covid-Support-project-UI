@@ -5,6 +5,7 @@ import CheckRoute from './context/route/checkRoute'
 import Header from './views/header';
 import HomePage from './views/homePage';
 import Account from './views/signup';
+import Order from './views/order';
 
 
 function App() {
@@ -13,12 +14,12 @@ function App() {
             <Switch>
                 <Redirect from="/" to="/login" exact />
                 <Route path="/login" component={Login} exact />
-                <Route path="/civilian" component={HomePage} exact />
-                <Route path="/product" component={HomePage} exact />
-                <Route path="/news" component={HomePage} exact />
-                <Route path="/order" component={HomePage} exact />
-                <Route path="/account" component={Account} exact />
-                <Route path="/civilians" component={HomePage} exact />
+                <CheckRoute path="/civilian" component={HomePage} exact />
+                <CheckRoute path="/product" component={HomePage} exact />
+                <CheckRoute path="/news" component={HomePage} exact />
+                <CheckRoute path="/order" component={Order} exact />
+                <CheckRoute path="/account" component={Account} exact />
+                <CheckRoute path="/civilians" component={HomePage} exact />
             </Switch>
         </Router>
     );

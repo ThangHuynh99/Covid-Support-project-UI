@@ -1,9 +1,9 @@
 import axiosClient from "./axiosClient";
 
 
-const usersAPI = {
+const UsersAPI = {
     getUsers(page) {
-        const url = "users" + page ? "?page=" + page : ""
+        const url = `users?page=${page}`
         const body = JSON.stringify({
             "district": JSON.parse(localStorage.getItem('userInfo')).district,
             "wardName": JSON.parse(localStorage.getItem('userInfo')).wardName,
@@ -13,4 +13,4 @@ const usersAPI = {
     },
 }
 
-export default usersAPI;
+export default UsersAPI;
