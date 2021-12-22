@@ -74,19 +74,39 @@ function Order(props) {
         <>
             <Header />
             <>
-                <div style={{margin: "10px 140px 0"}}>
-                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 0 && "active"} onClick={() => setStatusCart(0)}>
-                    Đang chờ 
-                </Button>
-                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 3 && "active"} onClick={() => setStatusCart(3)}>
-                    Đã lấy hàng
-                </Button>
-                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 1 && "active"} onClick={() => setStatusCart(1)}>
-                    Hoàn thành
-                </Button>
-                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 2 && "active"} onClick={() => setStatusCart(2)}>
-                    Đã hủy
-                </Button>
+                <div style={{ margin: '10px 140px 0' }}>
+                    <Button
+                        style={{ margin: '0 10px' }}
+                        variant="success btn-sm"
+                        className={statusCart === 0 && 'active'}
+                        onClick={() => setStatusCart(0)}
+                    >
+                        Đang chờ
+                    </Button>
+                    <Button
+                        style={{ margin: '0 10px' }}
+                        variant="success btn-sm"
+                        className={statusCart === 3 && 'active'}
+                        onClick={() => setStatusCart(3)}
+                    >
+                        Đã lấy hàng
+                    </Button>
+                    <Button
+                        style={{ margin: '0 10px' }}
+                        variant="success btn-sm"
+                        className={statusCart === 1 && 'active'}
+                        onClick={() => setStatusCart(1)}
+                    >
+                        Hoàn thành
+                    </Button>
+                    <Button
+                        style={{ margin: '0 10px' }}
+                        variant="success btn-sm"
+                        className={statusCart === 2 && 'active'}
+                        onClick={() => setStatusCart(2)}
+                    >
+                        Đã hủy
+                    </Button>
                 </div>
                 {cart ? (
                     cart.map((data, index) => (

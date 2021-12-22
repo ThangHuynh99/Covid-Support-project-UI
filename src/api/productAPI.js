@@ -8,14 +8,21 @@ const productAPI = {
         return axiosClient.get(url);
     },
 
+    findAllByDiable() {
+        const district =  JSON.parse(localStorage.getItem('userInfo')).district;
+        const wardName =  JSON.parse(localStorage.getItem('userInfo')).wardName;
+        const url = `product/disable/${district}/${wardName}`
+        return axiosClient.get(url);
+    },
+
     save(body) {
         const url = "manager/product"
-        return axiosClient.post(url, body);
+        return axiosClient.post(url, JSON.stringify(body));
     },
 
     update(body) {
         const url = "manager/product"
-        return axiosClient.put(url, body);
+        return axiosClient.put(url, JSON.stringify(body));
     },
 
     delete(id) {
