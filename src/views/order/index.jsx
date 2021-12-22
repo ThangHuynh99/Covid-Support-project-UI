@@ -7,13 +7,15 @@ import Button from 'react-bootstrap/Button';
 
 function Order(props) {
     const [cart, setCart] = useState();
-    const [ProductDetail, setProductDetail] = useState();
+    const [cartDetail, setCartDetail] = useState();
+    const [productDetail, setProductDetail] = useState();
     const [show, setShow] = useState(false);
     const [statusCart, setStatusCart] = useState(0);
+    const [change, setChange] = useState(false);
 
     useEffect(() => {
         findAll(statusCart);
-    }, [statusCart]);
+    }, [statusCart, change]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -51,34 +53,49 @@ function Order(props) {
             });
     };
 
-    const handlePicked = async (id, status) => {
-        await updateCartStatus(id, status);
-        setStatusCart(3);
+    const handlePicked = async (id) => {
+        await updateCartStatus(id, 3);
+        change === false ? setChange(true) : setChange(false);
         setShow(false);
     };
 
-    const handleDone = async (id, status) => {
-        await updateCartStatus(id, status);
-        setStatusCart(1);
+    const handleDone = async (id) => {
+        await updateCartStatus(id, 1);
+        change === false ? setChange(true) : setChange(false);
         setShow(false);
     };
 
-    const handleCancel = async (id, status) => {
-        await updateCartStatus(id, status);
-        setStatusCart(2);
+    const handleCancel = async (id) => {
+        await updateCartStatus(id, 2);
+        change === false ? setChange(true) : setChange(false);
         setShow(false);
     };
     return (
         <>
             <Header />
             <>
+                <div style={{margin: "10px 140px 0"}}>
+                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 0 && "active"} onClick={() => setStatusCart(0)}>
+                    Đang chờ 
+                </Button>
+                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 3 && "active"} onClick={() => setStatusCart(3)}>
+                    Đã lấy hàng
+                </Button>
+                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 1 && "active"} onClick={() => setStatusCart(1)}>
+                    Hoàn thành
+                </Button>
+                <Button style={{margin: "0 10px"}} variant="success btn-sm" className={statusCart === 2 && "active"} onClick={() => setStatusCart(2)}>
+                    Đã hủy
+                </Button>
+                </div>
                 {cart ? (
                     cart.map((data, index) => (
                         <article
                             className="order"
                             onClick={() => {
-                                setShow(true);
+                                setCartDetail(data);
                                 setProductDetail(data.listProduct);
+                                setShow(true);
                             }}
                             key={index}
                         >
@@ -116,8 +133,8 @@ function Order(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {ProductDetail &&
-                        ProductDetail.map((data, index) => (
+                    {productDetail &&
+                        productDetail.map((data, index) => (
                             <div key={index}>
                                 <h2>Tên sản phẩm: {data.name && data.name}</h2>
                                 <p>Giá: {data.price && data.price} vnđ</p>
@@ -127,23 +144,22 @@ function Order(props) {
                         ))}
                 </Modal.Body>
                 <Modal.Footer>
-                    {(ProductDetail && ProductDetail.status === 0) ? (
+                    {cartDetail && cartDetail.status === 0 && (
                         <>
-                            <Button variant="warning btn-sm" onClick={handlePicked}>
+                            <Button variant="warning btn-sm" onClick={() => handlePicked(cartDetail.id)}>
                                 Đã lấy hàng
                             </Button>
-                            <Button variant="danger btn-sm" onClick={handleCancel}>
+                            <Button variant="danger btn-sm" onClick={() => handleCancel(cartDetail.id)}>
                                 Hủy Đơn
                             </Button>
                         </>
-                    ) : <p></p>}
+                    )}
 
-                    {(ProductDetail && ProductDetail.status === 3) ? (
-                     
-                            <Button variant="warning btn-sm" onClick={handleDone}>
-                                Hoàn thành
-                            </Button>
-                    ) : <p></p>}
+                    {cartDetail && cartDetail.status === 3 && (
+                        <Button variant="warning btn-sm" onClick={() => handleDone(cartDetail.id)}>
+                            Hoàn thành
+                        </Button>
+                    )}
                     <Button variant="secondary btn-sm" onClick={handleClose}>
                         Close
                     </Button>
